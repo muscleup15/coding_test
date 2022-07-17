@@ -30,7 +30,20 @@ for (i = 1; i <= a.length; i++) {
     substring.push(a.slice(b, j * i));
     b = j * i;
   }
-
   string.push(substring);
 }
-console.log(string);
+
+let c = 1;
+for (i = 0; i < string[0].length; i++) {
+  if (string[0][i] == string[0][i + 1]) {
+    c = c + 1;
+    string[0].splice(i, 1);
+    i = i - 1;
+  } else {
+    string[0].splice(i, 0, c);
+    c = 1;
+    i = i + 1;
+  }
+}
+let filtered = string[0].filter((element) => element !== 1);
+console.log(filtered.join('').length);
